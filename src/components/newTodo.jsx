@@ -1,8 +1,12 @@
-import React, { useContext } from "react";
+import React, { useContext, useRef, useEffect } from "react";
 import SimpleContext from "./../context/simpleContext";
 
 const NewTodo = () => {
   const context = useContext(SimpleContext);
+  const inputRef = useRef(null);
+useEffect(()=>{
+  inputRef.current.focus()
+})
   return (
     <div>
       <form className="m-5 " onSubmit={context.handleNewTodo}>
@@ -22,6 +26,7 @@ const NewTodo = () => {
               </svg>
             </button>
             <input
+              ref={inputRef}
               type="text"
               dir="rtl"
               className="form-control"
